@@ -26,10 +26,10 @@ func (bc *BaseController) SetContext(context *appcontext.Context) {
 
 // CreateController membuat controller baru pada route
 // fungsi ini juga memberi konteks pada controller yang bersangkutan
-func CreateController(base *BaseController, routeName string, controller ControllerInterface) {
-	controller.SetContext(base.Context)
+func CreateController(router *gin.RouterGroup, context *appcontext.Context, routeName string, controller ControllerInterface) {
+	controller.SetContext(context)
 
 	// Definisikan route
-	base.Router = base.Router.Group(routeName)
-	controller.SetRoute(base.Router)
+	router = router.Group(routeName)
+	controller.SetRoute(router)
 }

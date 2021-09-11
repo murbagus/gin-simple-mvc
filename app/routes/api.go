@@ -11,10 +11,6 @@ func CreateRouteApi(app *gin.Engine, context *appcontext.Context) {
 
 	// Mengambil route setiap controller
 	route := app.Group(routePrefix)
-	base := &controllers.BaseController{
-		Router:  route,
-		Context: context,
-	}
 
-	controllers.CreateController(base, "/ping", &controllers.PingController{})
+	controllers.CreateController(route, context, "/ping", &controllers.PingController{})
 }
