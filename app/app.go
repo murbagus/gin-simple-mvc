@@ -13,9 +13,7 @@ import (
 // di dalam fungsi ini
 func NewApp() (app *gin.Engine) {
 	app = gin.New()
-	context := &appcontext.Context{
-		Database: "Ini adalah database",
-	}
+	context := appcontext.NewContext()
 
 	// Default middleware
 	app.Use(gin.Logger())

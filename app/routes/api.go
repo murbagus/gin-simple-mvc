@@ -13,4 +13,5 @@ func CreateRouteApi(app *gin.Engine, context *appcontext.Context) {
 	route := app.Group(routePrefix)
 
 	controllers.CreateController(route, context, "/ping", &controllers.PingController{})
+	controllers.CreateController(route, context, "/pengguna", &controllers.PenggunaController{})
 }
