@@ -13,7 +13,11 @@ type DatabaseContext struct {
 }
 
 func (dbc DatabaseContext) ConnectDatabase(connectionName string) *gorm.DB {
-	return dbc.Database[connectionName]
+	if val, ok := dbc.Database[connectionName]; ok {
+		return val
+	} else {
+		panic("koneksi database tidak ditemukan")
+	}
 }
 
 func (dbc *DatabaseContext) SetDatabaseConnection(connections map[string]*gorm.DB) {
